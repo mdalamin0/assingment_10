@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Login = () => {
     return (
         <div className=' w-25 mx-auto my-5 border rounded px-4 py-5' style={{ boxShadow: ' -10px 10px #FFE0B3' }}>
-            <h3>Login</h3>
+            <h3 className='text-primary'>Login</h3>
             <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
