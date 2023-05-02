@@ -6,12 +6,13 @@ import { toast } from "react-toastify";
 
 const Register = () => {
     const [error, setError] = useState('');
-    const { createUser, createUserWithGoogle, createUserWithGithub } = useContext(AuthContext);
+    const { createUser, createUserWithGoogle, createUserWithGithub, profileUpdate } = useContext(AuthContext);
 
     const handleRegister = (event) => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
+        const photoUrl = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
         if(password.length < 6) {
@@ -20,7 +21,8 @@ const Register = () => {
         }
         createUser(email, password)
         .then(result => {
-            console.log(result.user)
+            const loggedUser = result.user;
+            profileUpdate(loggedUser, name, photoUrl)
             setError('')
             toast("Wow Successfully Register!");
             form.reset();

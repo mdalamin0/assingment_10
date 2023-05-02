@@ -7,7 +7,15 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const NavigationBar = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOutUser } = useContext(AuthContext);
+    const handleLogOut = () => {
+      logOutUser()
+      .then()
+      .catch(error => {
+        console.log(error.message)
+      })
+    }
+
     return (
         <Navbar bg="light" expand="lg">
         <Container>
@@ -22,7 +30,8 @@ const NavigationBar = () => {
             </Nav>
             <div>
                 {
-                    user ? <><button className="btn btn-outline-primary fw-semibold">Log Out</button> <span className="h6">{user?.displayName}</span> </> : <Link to = '/login'><button className="btn btn-outline-primary">Login</button></Link>
+                    user ? <> <img className="rounded rounded-circle me-2" style={{width:'40px', height: '40px'}} src= {user?.photoURL} alt="" /> 
+                    <button onClick={handleLogOut} className="btn btn-outline-primary fw-semibold">Log Out</button> </> : <Link to = '/login'><button className="btn btn-outline-primary">Login</button></Link>
                 }
             </div>
           </Navbar.Collapse>
