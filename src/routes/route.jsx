@@ -4,7 +4,7 @@ import Main from "../Layoutes/MainLayout/Main";
 import Register from "../Login/Register/Register";
 import Login from "../Login/Login/Login";
 import Error from "../Components/Error/Error";
-import ChefDetails from "../Pages/Home/ChefDetails/ChefDetails";
+import ChefDetails from "../Pages/ChefDetails/ChefDetails/ChefDetails";
 
 const router = createBrowserRouter([
     {
