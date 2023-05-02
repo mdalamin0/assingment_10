@@ -3,38 +3,31 @@ import { useContext } from "react";
 import ActiveLink from "../../../Components/ActiveLink/ActiveLink";
 import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
 import './NavigationBar.css'
+import { Container, Nav, Navbar } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const NavigationBar = () => {
     const { user } = useContext(AuthContext);
     return (
-        <nav style={{ backgroundColor: '#1C2B35' }} className="navbar navbar-expand-lg">
-            <div className="container">
-                <h3 className="text-white">Chef Savvy</h3>
-                <button className="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon text-light"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav ms-auto mb-2 px- mb-lg-0 menu">
-                        <li className="nav-item">
-                            <ActiveLink className="nav-link" aria-current="page" to="/">Home</ActiveLink>
-                        </li>
-                        <li className="nav-item">
-                            <ActiveLink className="nav-link " to="/blog"> Blog</ActiveLink>
-                        </li>
-                        {user ? <li className="nav-item">
-                            <button className='nav-link text-white'>Log Out</button>
-                        </li> :
-                            <li className="nav-item">
-                                <ActiveLink className="nav-link" to="/login">Login</ActiveLink>
-                            </li>}
-                        <li className="nav-item">
-                            <ActiveLink className="nav-link" to="/register">Sign Up</ActiveLink>
-                        </li>
-                        <li className='nav-link text-white'>{user?.displayName}</li>
-                    </ul>
-                </div>
+        <Navbar bg="light" expand="lg">
+        <Container>
+          <Navbar.Brand href="#home"><h3 className="fw-bold text-warning">Chef Savvy</h3></Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="m-auto">
+              <ActiveLink to = '/'>Home</ActiveLink>
+              <ActiveLink to = '/blog'>Blog</ActiveLink>
+              <ActiveLink to = '/login'>Login</ActiveLink>
+              <ActiveLink to = '/register'>Sign Up</ActiveLink>
+            </Nav>
+            <div>
+                {
+                    user ? <><button className="btn btn-outline-primary fw-semibold">Log Out</button> <span className="h6">{user?.displayName}</span> </> : <Link to = '/login'><button className="btn btn-outline-primary">Login</button></Link>
+                }
             </div>
-        </nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     );
 };
 
