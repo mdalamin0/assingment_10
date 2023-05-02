@@ -1,9 +1,9 @@
-.width{
+.form-width{
     width: 30%;
 }
 
 @media screen and (max-width: 800px) {
-    .width{
+    .form-width{
         width: 75%;
     }
   }

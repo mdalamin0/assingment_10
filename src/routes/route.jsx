@@ -4,6 +4,7 @@ import Main from "../Layoutes/MainLayout/Main";
 import Register from "../Login/Register/Register";
 import Login from "../Login/Login/Login";
 import Error from "../Components/Error/Error";
+import ChefDetails from "../Pages/Home/ChefDetails/ChefDetails";
 
 const router = createBrowserRouter([
     {
@@ -22,6 +23,11 @@ const router = createBrowserRouter([
             {
                 path: 'register',
                 element: <Register></Register>
+            },
+            {
+                path: 'chef/:id',
+                element: <ChefDetails></ChefDetails>,
+                loader:({params}) => fetch(`http://localhost:5000/chef/${params.id}`)
             }
         ]
     },

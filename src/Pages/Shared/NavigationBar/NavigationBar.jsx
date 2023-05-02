@@ -30,7 +30,7 @@ const NavigationBar = () => {
             </Nav>
             <div>
                 {
-                    user ? <> <img className="rounded rounded-circle me-2" style={{width:'40px', height: '40px'}} src= {user?.photoURL} alt="" /> 
+                    user ? <> <img title= {user?.displayName} className="rounded rounded-circle me-2" style={{width:'40px', height: '40px'}} src= {user?.photoURL} alt="" /> 
                     <button onClick={handleLogOut} className="btn btn-outline-primary fw-semibold">Log Out</button> </> : <Link to = '/login'><button className="btn btn-outline-primary">Login</button></Link>
                 }
             </div>
