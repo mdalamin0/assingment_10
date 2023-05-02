@@ -1,0 +1,16 @@
+
+
+ .md-w-50{
+    width: 50%;
+ }
+  @media screen and (max-width: 1000px) {
+    .md-w-50{
+        width: 100%;
+    }
+    .width{
+        width: 100%;
+    }
+    .d-flex{
+        flex-direction: column;
+    }
+  }

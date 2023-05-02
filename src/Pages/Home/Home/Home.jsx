@@ -3,9 +3,11 @@ import Banner from "../Banner/Banner";
 
 const Home = () => {
     return (
-        <Container>
-            <Banner></Banner>
-        </Container>
+        <div className="bg-light">
+            <Container className="pt-4">
+                <Banner></Banner>
+            </Container>
+        </div>
     );
 };
 
