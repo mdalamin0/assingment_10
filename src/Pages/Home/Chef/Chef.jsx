@@ -19,6 +19,7 @@ const Chef = () => {
             <AbutChef></AbutChef>
             <ChefEducation></ChefEducation>
             <Container className="my-5">
+                <h2 className="text-center my-5 pt-5">Our best Chef Here</h2>
                 <Row xs={1} md={2} lg={3} className="g-4">
                     {
                         chefs.map(chef => <DisplayChef key={chef.id} chef={chef}></DisplayChef>)
