@@ -1,9 +1,11 @@
+import { Rating } from "@smastrom/react-rating";
+import '@smastrom/react-rating/style.css'
 import { Card, Col } from "react-bootstrap";
 import { toast } from "react-toastify";
 
 
 const Recipes = ({ recipe }) => {
-    const { name, image, ingredients, steps } = recipe;
+    const { name, image, ingredients, steps, rating } = recipe;
 
     const handleFavorite = () => {
         toast('Added Favorite')
@@ -28,10 +30,19 @@ const Recipes = ({ recipe }) => {
                             }
                         </ul>
                     </div>
-                    <div className="">
-                    <button onClick={handleFavorite} className="btn btn-warning text-white fw-semibold ">Favorite</button>
-                    </div>
                 </Card.Body>
+                <Card.Footer className="text-muted d-flex">
+                    <div className='flex-grow-1 d-flex align-items-center '>
+                        <Rating
+                            style={{ maxWidth: 150 }}
+                            value={rating?.number}
+                            readOnly
+                        /> <span className='ms-3'>{rating?.number}</span>
+                    </div>
+                    <div>
+                        <button onClick={handleFavorite} className="btn btn-warning text-white fw-semibold ">Favorite</button>
+                    </div>
+                </Card.Footer>
             </Card>
         </Col>
     );
