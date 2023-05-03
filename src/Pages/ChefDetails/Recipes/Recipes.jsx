@@ -13,7 +13,7 @@ const Recipes = ({ recipe }) => {
     return (
         <Col>
             <Card className="p-3 h-100">
-                <Card.Img variant="top h-75" src={image} />
+                <Card.Img variant="top" className="h-75" src={image} />
                 <Card.Body className="h-100 mt-3">
                     <Card.Title> <h3>{name}</h3> </Card.Title>
                     <div >

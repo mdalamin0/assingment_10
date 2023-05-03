@@ -43,7 +43,7 @@ const Login = () => {
         createUserWithGoogle()
             .then(result => {
                 console.log(result.user)
-                toast("Wow Successfully Register!");
+                toast("Wow Successfully Login!");
             })
             .catch(error => {
                 alert(error.message)
