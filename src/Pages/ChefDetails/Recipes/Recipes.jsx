@@ -1,19 +1,25 @@
 import { Rating } from "@smastrom/react-rating";
 import '@smastrom/react-rating/style.css'
+import { useState } from "react";
 import { Card, Col } from "react-bootstrap";
+import LazyLoad from "react-lazy-load";
 import { toast } from "react-toastify";
 
 
 const Recipes = ({ recipe }) => {
+    const [disable, setDesable] = useState(true);
     const { name, image, ingredients, steps, rating } = recipe;
 
     const handleFavorite = () => {
+        setDesable(false);
         toast('Added Favorite')
     }
     return (
         <Col>
             <Card className="p-3 h-100">
-                <Card.Img variant="top" className="h-75" src={image} />
+                <LazyLoad>
+                    <Card.Img variant="top" className="h-75" src={image} />
+                </LazyLoad>
                 <Card.Body className="h-100 mt-3">
                     <Card.Title> <h3>{name}</h3> </Card.Title>
                     <div >
@@ -40,7 +46,7 @@ const Recipes = ({ recipe }) => {
                         /> <span className='ms-3'>{rating?.number}</span>
                     </div>
                     <div>
-                        <button onClick={handleFavorite} className="btn btn-warning text-white fw-semibold ">Favorite</button>
+                        <button onClick={handleFavorite} disabled={!disable} className="btn btn-warning text-white fw-semibold ">Favorite</button>
                     </div>
                 </Card.Footer>
             </Card>

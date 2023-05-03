@@ -1,11 +1,15 @@
 import { useContext, useState } from 'react';
 import './Login.css'
 import { Button, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
 
 const Login = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+    console.log(from)
     const [error, setError] = useState('');
     const [emailError, setEmailError] = useState('');
     const { signInUser, createUserWithGoogle, createUserWithGithub } = useContext(AuthContext);
@@ -19,6 +23,7 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
+                navigate(from, {replace: true})
                 setError('')
                 setEmailError('')
                 form.reset();
@@ -42,6 +47,7 @@ const Login = () => {
     const handleSignInWithGoogle = () => {
         createUserWithGoogle()
             .then(result => {
+                navigate(from, {replace: true})
                 console.log(result.user)
                 toast("Wow Successfully Login!");
             })
@@ -52,6 +58,7 @@ const Login = () => {
     const handleSignInWithGithub = () => {
         createUserWithGithub()
             .then(result => {
+                navigate(from, {replace: true})
                 console.log(result.user)
                 toast("Wow Successfully Login!");
             })

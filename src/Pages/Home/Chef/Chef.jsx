@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
 import DisplayChef from "../DisplayChef/DisplayChef";
+import AbutChef from "../AboutChef/AbutChef";
+import ChefEducation from "../AboutChef/ChefEducation/ChefEducation";
 
 const Chef = () => {
     const [chefs, setChefs] = useState([]);
@@ -10,14 +12,17 @@ const Chef = () => {
             .then(data => setChefs(data))
     }, [])
     return (
-        <Container className="my-5">
-            <h4>Here is chef section</h4>
-            <Row xs={1} md={2} lg={3} className="g-4">
-                {
-                    chefs.map(chef => <DisplayChef key={chef.id} chef={chef}></DisplayChef>)
-                }
-            </Row>
-        </Container>
+        <>
+            <AbutChef></AbutChef>
+            <ChefEducation></ChefEducation>
+            <Container className="my-5">
+                <Row xs={1} md={2} lg={3} className="g-4">
+                    {
+                        chefs.map(chef => <DisplayChef key={chef.id} chef={chef}></DisplayChef>)
+                    }
+                </Row>
+            </Container>
+        </>
     );
 };
 

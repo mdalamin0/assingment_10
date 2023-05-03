@@ -18,7 +18,7 @@ const ChefDetails = () => {
                         <p>Likes: <span className='text-success'>{likes}</span></p>
                         <Link to='/'><button className='btn btn-primary fw-semibold'>Back to Home</button></Link>
                     </div>
-                    <div className=" md-w-50 ">
+                    <div className=" md-w-50 mt-4">
                         <img className="w-100" src={image} alt="" />
                     </div>
                 </div>
