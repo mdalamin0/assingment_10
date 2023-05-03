@@ -35,7 +35,7 @@ const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <ChefDetails></ChefDetails>
                 </PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/chef/${params.id}`)
+                loader: ({ params }) => fetch(`https://chef-food-recipe-server-mdalamin0.vercel.app/chef/${params.id}`)
             }
         ]
     },

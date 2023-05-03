@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
 import DisplayChef from "../DisplayChef/DisplayChef";
 import AbutChef from "../AboutChef/AbutChef";
@@ -6,8 +6,11 @@ import ChefEducation from "../AboutChef/ChefEducation/ChefEducation";
 
 const Chef = () => {
     const [chefs, setChefs] = useState([]);
+    // if(loading) {
+    //     return <div>Loading..</div>
+    // }
     useEffect(() => {
-        fetch('http://localhost:5000/chef')
+        fetch('https://chef-food-recipe-server-mdalamin0.vercel.app/chef')
             .then(res => res.json())
             .then(data => setChefs(data))
     }, [])
